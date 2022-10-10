@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="salvar">Salvar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="descreva_o_produto">Descreva o Produto</string>
+    <string name="estoque">Estoque</string>
+    <string name="nome_do_produto">Nome do Produto</string>
+    <string name="downloadimage">downloadimage</string>
+    <string name="cadastro_de_produto">Cadastro de Produto</string>
+    <string name="insira_o_link_da_imagem_do_produto">Insira o link da imagem do produto</string>
+    <string name="atualizar">Atualizar</string>
+    <string name="deletar">Deletar</string>
+    <string name="preco">Preço</string>
+    <string name="_00_00">00,00</string>
+    <string name="unid">unid</string>
+    <string name="link_da_imagem_do_produto">link da imagem do produto</string>
+    <string name="nome">Nome:</string>
+    <string name="categoria">Categoria:</string>
+    <string name="categoria2">Categoria:</string>
+    <string name="link">Link:</string>
+    <string name="_0">0</string>
+    <string name="categoria3">Categoria:</string>
+    <string name="qty">Qty:</string>
+    <string name="zero">0</string>
+    <string name="comprar_agora">Comprar Agora</string>
+    <string name="adicionar_ao_carrinho">Adicionar ao Carrinho</string>
+    <string name="descricao_do_produto">Descrição do Produto</string>
+    <string name="real">R$</string>
+    <string name="botao_add">botão add</string>
+    <string name="botao_remove">botão remove</string>
+    <string name="Required" />
+    <string name="nome_completo">Nome Completo</string>
+    <string name="e_mail">E-mail</string>
+    <string name="cpf">CPF</string>
+    <string name="data_de_nascimento">Data de Nascimento</string>
+    <string name="cadastro_de_usuario">Cadastro de Usuário</string>
+    <string name="telefone_ddd_num">Telefone (DDD + num)</string>
+    <string name="voltar">Voltar</string>
+    <string name="proximo">Próximo</string>
+    <string name="passo_1_de_2">Passo 1 de 2</string>
+    <string name="senha">Senha</string>
+    <string name="bairro">Bairro</string>
+    <string name="complemento">Complemento</string>
+    <string name="numero">Número</string>
+    <string name="data_de_nasc">Data de Nasc</string>
+</resources>

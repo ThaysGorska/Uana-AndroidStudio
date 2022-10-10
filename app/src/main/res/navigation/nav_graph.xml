@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/produtoFragment">
+
+    <fragment
+        android:id="@+id/produtoFragment"
+        android:name="com.example.uana.ProdutoFragment"
+        android:label="fragment_produto"
+        tools:layout="@layout/fragment_produto" >
+        <action
+            android:id="@+id/action_produtoFragment_to_formFragment"
+            app:destination="@id/formFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/formFragment"
+        android:name="com.example.uana.FormFragment"
+        android:label="fragment_form"
+        tools:layout="@layout/fragment_form" >
+        <action
+            android:id="@+id/action_formFragment_to_produtoFragment"
+            app:destination="@id/produtoFragment"
+            app:popUpTo="@id/produtoFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/cadastroUsuarioFragment"
+        android:name="com.example.uana.CadastroUsuarioFragment"
+        android:label="fragment_cadastro_usuario"
+        tools:layout="@layout/fragment_cadastrousuario1" >
+        <action
+            android:id="@+id/action_cadastroUsuarioFragment_to_cadastroUsuario2Fragment"
+            app:destination="@id/cadastroUsuario2Fragment" />
+        <action
+            android:id="@+id/action_cadastroUsuarioFragment_to_loginFragment2"
+            app:destination="@id/loginFragment2"
+            app:popUpTo="@id/loginFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/cadastroUsuario2Fragment"
+        android:name="com.example.uana.CadastroUsuario2Fragment"
+        android:label="fragment_cadastro_usuario2"
+        tools:layout="@layout/fragment_cadastro_usuario2" >
+        <action
+            android:id="@+id/action_cadastroUsuario2Fragment_to_cadastroUsuarioFragment"
+            app:destination="@id/cadastroUsuarioFragment"
+            app:popUpTo="@id/cadastroUsuarioFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_cadastroUsuario2Fragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.uana.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/loginFragment2"
+        android:name="com.example.uana.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment2_to_cadastroUsuarioFragment"
+            app:destination="@id/cadastroUsuarioFragment" />
+    </fragment>
+</navigation>
