@@ -118,7 +118,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/Terracora_claro"
-            android:text="@string/adicionar_ao_carrinho"
+            android:text="Excluir"
             android:textStyle="bold"
             tools:ignore="TextContrastCheck" />
 

@@ -1,15 +1,19 @@
 package com.example.uana.adapter
 
+import android.app.AlertDialog
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.uana.MainViewModel
 import com.example.uana.databinding.CardLayoutBinding
 import com.example.uana.model.Produto
 
 class ProdutoAdapter(
     val produtoClickListener: ProdutoClickListener,
-    val mainViewModel: MainViewModel
+    val mainViewModel: MainViewModel,
+    val context: Context
 ) : RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>(
 
 
@@ -49,6 +53,10 @@ class ProdutoAdapter(
             produtoClickListener.onProdutoClickListener(produto)
         }
 
+        holder.binding.button4.setOnClickListener {
+            showAlertDialog(produto.id)
+        }
+
 
     }
 
@@ -60,5 +68,17 @@ class ProdutoAdapter(
 
         listProduto = list.sortedByDescending { it.id }
         notifyDataSetChanged()
+    }
+
+    private fun showAlertDialog(id:Long){
+        AlertDialog.Builder(context)
+            .setTitle("Excluir Produto")
+            .setMessage("Deseja excluir o produto?")
+            .setPositiveButton("Sim"){
+                _,_ -> mainViewModel.deleteProduto(id)
+            }
+            .setNegativeButton("Não"){
+                _,_ ->
+            }.show()
     }
 }

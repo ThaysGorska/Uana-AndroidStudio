@@ -29,7 +29,7 @@ class ProdutoFragment : Fragment(), ProdutoClickListener {
 
         mainViewModel.listProduto()
 
-        val adapter = ProdutoAdapter(this, mainViewModel)
+        val adapter = ProdutoAdapter(this, mainViewModel, requireContext())
         binding.recyclerProduto.layoutManager = GridLayoutManager(context, 2)
         binding.recyclerProduto.adapter = adapter
         binding.recyclerProduto.setHasFixedSize(true)

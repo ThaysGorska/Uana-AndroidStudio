@@ -47,37 +47,111 @@ class MainViewModel @Inject constructor
         }
     }
 
+    fun listCategoriaNome() {
+        viewModelScope.launch {
+            try {
+                val response = repository.listCategoriaNome()
+                _myCategoriaResponse.value = response
+            } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
     fun addProduto(produto: Produto) {
         viewModelScope.launch {
             try {
                 val response = repository.addProduto(produto)
                 Log.d("Sucesso!", response.body().toString())
                 listProduto()
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 Log.d("Erro", e.message.toString())
             }
         }
     }
 
-    fun listProduto(){
+    fun listProduto() {
 
         viewModelScope.launch {
             try {
                 val response = repository.listProduto()
                 _myProdutoResponse.value = response
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 Log.d("Erro", e.message.toString())
             }
         }
 
     }
 
-    fun updateProduto(produto: Produto){
+    fun listProdutoNome() {
+
+        viewModelScope.launch {
+            try {
+                val response = repository.listProdutoNome()
+                _myProdutoResponse.value = response
+            } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+
+    }
+
+    fun listProdutoCodigo() {
+
+        viewModelScope.launch {
+            try {
+                val response = repository.listProdutoCodigo()
+                _myProdutoResponse.value = response
+            } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+
+    }
+
+    fun listProdutoPreco() {
+
+        viewModelScope.launch {
+            try {
+                val response = repository.listProdutoPreco()
+                _myProdutoResponse.value = response
+            } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+
+    }
+
+    fun listProdutoDescricao() {
+
+        viewModelScope.launch {
+            try {
+                val response = repository.listProdutoDescricao()
+                _myProdutoResponse.value = response
+            } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+
+    }
+
+    fun updateProduto(produto: Produto) {
         viewModelScope.launch {
             try {
                 repository.updateProduto(produto)
                 listProduto()
-            }catch (e: Exception){
+            } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun deleteProduto(id: Long) {
+        viewModelScope.launch {
+            try {
+                repository.deleteProduto(id)
+                listProduto()
+            } catch (e: Exception) {
                 Log.d("Erro", e.message.toString())
             }
         }

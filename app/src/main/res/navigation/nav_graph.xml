@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_produtoFragment_to_formFragment"
             app:destination="@id/formFragment" />
+        <action
+            android:id="@+id/action_produtoFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
     </fragment>
     <fragment
         android:id="@+id/formFragment"
@@ -67,4 +70,14 @@
             android:id="@+id/action_loginFragment2_to_cadastroUsuarioFragment"
             app:destination="@id/cadastroUsuarioFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.uana.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" />
+    <fragment
+        android:id="@+id/listProdutoFragment"
+        android:name="com.example.uana.ListProdutoFragment"
+        android:label="fragment_list_produto"
+        tools:layout="@layout/fragment_list_produto" />
 </navigation>
