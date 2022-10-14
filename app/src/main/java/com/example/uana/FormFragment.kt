@@ -8,10 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
+
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.uana.databinding.FragmentFormBinding
@@ -43,6 +42,8 @@ class FormFragment : Fragment() {
         estoqueFocusListener()
         descricaoFocusListener()
         imagemProdutoFocusListener()
+
+
 
         mainViewModel.myCategoriaResponse.observe(viewLifecycleOwner) { response ->
             Log.d("Requisicao", response.body().toString())
@@ -180,7 +181,7 @@ class FormFragment : Fragment() {
         var message = ""
 
         if (binding.nomeContainer.helperText != null) {
-            message += "\n\nEmail: " + binding.nomeContainer.helperText
+            message += "\n\nNome: " + binding.nomeContainer.helperText
         }
 
         if (binding.precoContainer.helperText != null) {
@@ -217,7 +218,7 @@ class FormFragment : Fragment() {
         val categoria = Categoria(categoriaSelecionada, " ", null)
 
 
-        var message = "Email:" + binding.editNome.text
+        var message = "Nome:" + binding.editNome.text
         message += "\nPreço:" + binding.editPreco.text
         message += "\nEstoque:" + binding.editEstoque.text
         message += "\nDescrição:" + binding.editDescricao.text

@@ -2,6 +2,7 @@ package com.example.uana.api
 
 import com.example.uana.model.Categoria
 import com.example.uana.model.Produto
+import com.example.uana.model.Usuario
 import retrofit2.Response
 
 class Repository {
@@ -46,4 +47,19 @@ class Repository {
         return RetrofitInstance.api.deleteProduto(id)
     }
 
+    suspend fun consultaUsuarioEmail(email:String) :Response<Usuario>{
+        return RetrofitInstance.api.consultaUsuarioEmail(email)
+    }
+
+    suspend fun consultaUsuarioSenha(senha: String):Response<Usuario>{
+        return RetrofitInstance.api.consultaUsuarioSenha(senha)
+    }
+
+    suspend fun addUsuario(usuario: Usuario): Response<Usuario> {
+        return RetrofitInstance.api.addUsuario(usuario)
+    }
+
+    suspend fun updateUsuario(usuario: Usuario): Response<Usuario> {
+        return RetrofitInstance.api.updateUsuario(usuario)
+    }
 }

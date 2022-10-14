@@ -5,55 +5,110 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.uana.databinding.FragmentLoginBinding
+import kotlinx.android.synthetic.main.fragment_login.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentLoginBinding
+    private val mainViewModel: MainViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
-    }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LoginFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
+
+        binding.buttonEntrar.setOnClickListener {
+
+            if (textEmailAddress.text.toString()
+                    .equals("admin@gmail.com") && textPassword.text.toString()
+                    .equals("admin")
+            ) {
+
+                Toast.makeText(context, "Seja Bem-Vindo!", Toast.LENGTH_SHORT).show()
+
+                findNavController().navigate(R.id.action_loginFragment2_to_homeFragment)
+
+            } else {
+
+                Toast.makeText(
+                    context,
+                    "Combinação de usuário e senha inválida!",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+
+                //acessarConta()
+
             }
+        }
+
+            binding.buttonNovaConta.setOnClickListener {
+
+                findNavController().navigate(R.id.action_loginFragment2_to_cadastroUsuarioFragment)
+
+            }
+
+            binding.textEsqueciSenha.setOnClickListener {
+
+                findNavController().navigate((R.id.action_loginFragment2_to_recuperarContaFragment2))
+            }
+
+            return binding.root
+
+        }
+
+        /*private fun validarCampos(email: String, senha: String): Boolean {
+
+            return !(email == "" || email.length <= 3) &&
+                    (senha == "" || senha.length <= 5)
+        }
+
+        private fun acessarConta() {
+
+            val email = binding.textEmailAddress.text.toString()
+            val senha = binding.textPassword.text.toString()
+
+            if (validarCampos(email, senha)) {
+
+                mainViewModel.consultaUsuarioEmail(email)
+                mainViewModel.consultaUsuarioSenha(senha)
+
+                mainViewModel.usuarioLog.observe(viewLifecycleOwner) { response ->
+                    if (response.body() != null) {
+                        if (senha == mainViewModel.usuarioLog.value?.body()?.senha.toString()) {
+                            Toast.makeText(
+                                context,
+                                "Seja Bem-Vindo!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                            findNavController().navigate(R.id.action_loginFragment2_to_homeFragment)
+                        }
+
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "Combinação de usuário e senha inválida!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                }
+
+            } else {
+                Toast.makeText(
+                    context,
+                    "Preencha todos os campos!!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }*/
     }
-}

@@ -6,9 +6,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.uana.MainActivity
 import com.example.uana.MainViewModel
+import com.example.uana.ShoppingCart
 import com.example.uana.databinding.CardLayoutBinding
+import com.example.uana.databinding.FragmentListProdutoBinding
+import com.example.uana.model.ItemDeCarrinho
 import com.example.uana.model.Produto
+import com.google.android.material.snackbar.Snackbar
 
 class ProdutoAdapter(
     val produtoClickListener: ProdutoClickListener,
@@ -35,30 +40,27 @@ class ProdutoAdapter(
 
         holder.binding.textNome.text = produto.nome
         holder.binding.textPreco.text = produto.preco
-        holder.binding.textQuantidade.text = produto.quantidade.toString()
+        holder.binding.textEstoque.text = produto.estoque.toString()
 
-        holder.binding.buttonAdd.setOnClickListener{
-
-            produto.addQuantidade()
-            notifyItemChanged(position)
-        }
-
-        holder.binding.buttonRem.setOnClickListener{
-
-            produto.remQuantidade()
-            notifyItemChanged(position)
-        }
 
         holder.itemView.setOnClickListener {
             produtoClickListener.onProdutoClickListener(produto)
         }
 
-        holder.binding.button4.setOnClickListener {
+        holder.binding.buttonDeletar.setOnClickListener {
             showAlertDialog(produto.id)
         }
 
+        Glide
+            .with(context)
+            .load(produto.imagemProduto)
+            .placeholder(android.R.drawable.ic_menu_report_image)
+            .into(holder.binding.imageLink)
+
+
 
     }
+
 
     override fun getItemCount(): Int {
         return listProduto.size
@@ -70,15 +72,14 @@ class ProdutoAdapter(
         notifyDataSetChanged()
     }
 
-    private fun showAlertDialog(id:Long){
+    private fun showAlertDialog(id: Long) {
         AlertDialog.Builder(context)
             .setTitle("Excluir Produto")
             .setMessage("Deseja excluir o produto?")
-            .setPositiveButton("Sim"){
-                _,_ -> mainViewModel.deleteProduto(id)
+            .setPositiveButton("Sim") { _, _ ->
+                mainViewModel.deleteProduto(id)
             }
-            .setNegativeButton("Não"){
-                _,_ ->
+            .setNegativeButton("Não") { _, _ ->
             }.show()
     }
 }

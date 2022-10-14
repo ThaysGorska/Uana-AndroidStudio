@@ -8,7 +8,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.uana.api.Repository
 import com.example.uana.model.Categoria
 import com.example.uana.model.Produto
+import com.example.uana.model.Usuario
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.time.LocalDate
@@ -19,6 +21,8 @@ class MainViewModel @Inject constructor
     (private val repository: Repository) : ViewModel() {
 
     val dataSelecionada = MutableLiveData<LocalDate>()
+
+    val usuarioLog = MutableLiveData<Response<Usuario>>()
 
     var produtoSelecionar: Produto? = null
 
@@ -157,5 +161,56 @@ class MainViewModel @Inject constructor
         }
     }
 
+    fun consultaUsuarioEmail(email: String) {
+        viewModelScope.launch {
+            try {
+                val response = repository.consultaUsuarioEmail(email)
+                usuarioLog.value = response
+
+            } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun consultaUsuarioSenha(senha: String) {
+        viewModelScope.launch {
+            try {
+                val response = repository.consultaUsuarioSenha(senha)
+                usuarioLog.value = response
+
+            } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun addUsuario(usuario: Usuario) {
+        viewModelScope.launch {
+            try {
+                val response = repository.addUsuario(usuario)
+                Log.d("Sucesso!", response.body().toString())
+                listProduto()
+
+            } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun updateUsuario(usuario: Usuario) {
+        viewModelScope.launch {
+
+            try {
+                repository.updateUsuario(usuario)
+                listProduto()
+            } catch (e: Exception) {
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
 
 }
+
+
